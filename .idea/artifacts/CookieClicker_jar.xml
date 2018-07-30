@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CookieClicker:jar">
+    <output-path>$USER_HOME$/Desktop/testServer/plugins</output-path>
+    <root id="archive" name="CookieClicker.jar">
+      <element id="module-output" name="CookieClicker" />
+    </root>
+  </artifact>
+</component>

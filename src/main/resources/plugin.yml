@@ -1,0 +1,30 @@
+name: CookieClicker
+version: 1.5
+main: de.eintosti.cookieclicker.CookieClicker
+author: einTosti
+website: www.twitter.com/einTosti
+
+commands:
+    Boosters:
+        description: Need. More. Cookies!
+        usage: /<command>
+    Clicker:
+        description: Even more cookies!
+        usage: /<command>
+    Cookies:
+        description: Mmm... cookies!
+        usage: /<command>
+
+permissions:
+    cookies.boosters:
+        description: Have you ever wanted more cookies?
+        default: true
+    cookies.item:
+        description: Get the CookieClicker.
+        default: OP
+    cookies.others:
+        description: See if any of the other players have any cookies.
+        default: OP
+    cookies.self:
+        description: Check your wonderful amount of cookies.
+        default: true
