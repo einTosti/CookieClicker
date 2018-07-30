@@ -26,11 +26,13 @@ public class Boosters implements CommandExecutor {
             Utils.getInstance().sendPermError(player);
             return true;
         }
-
-        if (args.length == 0) {
-            BoosterInventory.getInstance().openInventory(player);
-        } else {
-            Messages.getInstance().sendMessage(player, mPrefix + Utils.getInstance().getString("usage_booster"));
+        switch (args.length) {
+            case 0:
+                BoosterInventory.getInstance().openInventory(player);
+                break;
+            default:
+                Messages.getInstance().sendMessage(player, mPrefix + Utils.getInstance().getString("usage_booster"));
+                break;
         }
         return true;
     }

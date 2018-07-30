@@ -2,7 +2,6 @@ package de.eintosti.cookieclicker.misc;
 
 import de.eintosti.cookieclicker.CookieClicker;
 import de.eintosti.cookieclicker.messages.Messages;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -51,7 +50,7 @@ public class Utils {
         CookieClicker.plugin.saveConfig();
     }
 
-    public void addItemStack(Inventory inv, int position, Material material, int id, String displayName, String... lore) {
+    public void addItemStack(Inventory inv, int position, org.bukkit.Material material, int id, String displayName, String... lore) {
         ItemStack itemStack = new ItemStack(material, 1, (byte) id);
         ItemMeta meta = itemStack.getItemMeta();
 
@@ -65,7 +64,7 @@ public class Utils {
 
     @SuppressWarnings("deprecation")
     public void addSkull(Inventory inv, int position, String displayName, String skullOwner, String... lore) {
-        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD_ITEM.getMaterial(), 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
 
         skullMeta.setOwner(skullOwner);
@@ -78,7 +77,7 @@ public class Utils {
     }
 
     public void addGlassPane(Inventory inv, int position) {
-        ItemStack itemStack = new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1, (byte) 15);
+        ItemStack itemStack = new ItemStack(Material.BLACK_STAINED_GLASS_PANE.getMaterial(), 1, (byte) 15);
         ItemMeta meta = itemStack.getItemMeta();
         meta.setDisplayName(" ");
         itemStack.setItemMeta(meta);

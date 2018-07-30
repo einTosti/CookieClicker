@@ -2,8 +2,8 @@ package de.eintosti.cookieclicker.commands;
 
 import de.eintosti.cookieclicker.CookieClicker;
 import de.eintosti.cookieclicker.messages.Messages;
+import de.eintosti.cookieclicker.misc.Material;
 import de.eintosti.cookieclicker.misc.Utils;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +13,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 
-import static org.bukkit.Bukkit.getServer;
 
 /**
  * @author einTosti
@@ -26,8 +25,7 @@ public class Cookies implements CommandExecutor {
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
 
-        if (CookieClicker.plugin.getConfig().get(player.getName()) == null)
-            Utils.getInstance().addPlayerToConfig(player);
+        if (CookieClicker.plugin.getConfig().get(player.getName()) == null) Utils.getInstance().addPlayerToConfig(player);
         int numCookies = CookieClicker.plugin.getConfig().getInt(player.getName() + ".cookies", 0);
         String message = "";
 
@@ -79,18 +77,18 @@ public class Cookies implements CommandExecutor {
 
     @SuppressWarnings("deprecation")
     private ItemStack cookieItem() {
-        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD_ITEM.getMaterial(), 1, (short) 3);
 
-        SkullMeta meta = (SkullMeta) skull.getItemMeta();
-        meta.setOwner("QuadratCookie");
-        meta.setDisplayName("§eCookie§6Clicker");
+        SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+        skullMeta.setOwner("QuadratCookie");
+        skullMeta.setDisplayName("§eCookie§6Clicker");
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§e» §7Place this to start clicking.");
-        meta.setLore(lore);
+        lore.add("§e» §7§oPlace this to start clicking.");
+        skullMeta.setLore(lore);
 
-        skull.setItemMeta(meta);
-        return skull;
+        itemStack.setItemMeta(skullMeta);
+        return itemStack;
     }
 }
 

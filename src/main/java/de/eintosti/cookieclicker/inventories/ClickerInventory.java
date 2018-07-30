@@ -1,9 +1,9 @@
 package de.eintosti.cookieclicker.inventories;
 
 import de.eintosti.cookieclicker.CookieClicker;
+import de.eintosti.cookieclicker.misc.Material;
 import de.eintosti.cookieclicker.misc.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -25,7 +25,7 @@ public class ClickerInventory {
         int numBooster = CookieClicker.plugin.getConfig().getInt(player.getName() + ".booster");
 
         fillGuiWithGlass(inv);
-        Utils.getInstance().addItemStack(inv, 13, Material.COOKIE, 0, "§eCookie§6Clicker", Utils.getInstance().getString("current_cookies").replace("%cookies%", String.valueOf(numCookies)), Utils.getInstance().getString("current_booster").replace("%booster%", String.valueOf(numBooster)), "§7", Utils.getInstance().getString("item_info"));
+        Utils.getInstance().addItemStack(inv, 13, Material.COOKIE.getMaterial(), 0, "§eCookie§6Clicker", Utils.getInstance().getString("current_cookies").replace("%cookies%", String.valueOf(numCookies)), Utils.getInstance().getString("current_booster").replace("%booster%", String.valueOf(numBooster)), "§7", Utils.getInstance().getString("item_info"));
 
         return inv;
     }

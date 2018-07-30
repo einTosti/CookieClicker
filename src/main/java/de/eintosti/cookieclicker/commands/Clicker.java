@@ -19,10 +19,13 @@ public class Clicker implements CommandExecutor {
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
 
-        if (args.length == 0) {
-            ClickerInventory.getInstance().openInventory(player);
-        } else {
-            Messages.getInstance().sendMessage(player, mPrefix + Utils.getInstance().getString("usage_clicker"));
+        switch (args.length) {
+            case 0:
+                ClickerInventory.getInstance().openInventory(player);
+                break;
+            default:
+                Messages.getInstance().sendMessage(player, mPrefix + Utils.getInstance().getString("usage_clicker"));
+                break;
         }
         return true;
     }

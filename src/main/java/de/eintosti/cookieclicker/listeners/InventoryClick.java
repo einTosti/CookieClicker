@@ -1,9 +1,9 @@
 package de.eintosti.cookieclicker.listeners;
 
 import de.eintosti.cookieclicker.inventories.ClickerInventory;
+import de.eintosti.cookieclicker.misc.Material;
 import de.eintosti.cookieclicker.misc.Sounds;
 import de.eintosti.cookieclicker.misc.Utils;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,10 +31,10 @@ public class InventoryClick implements Listener {
         int newCookies = numCookies + booster;
 
         ItemStack itemStack = event.getCurrentItem();
-        if (itemStack == null || itemStack.getType() == Material.AIR || !itemStack.hasItemMeta()) return;
-        Material itemType = itemStack.getType();
+        if (itemStack == null || itemStack.getType() == Material.AIR.getMaterial() || !itemStack.hasItemMeta()) return;
+        org.bukkit.Material itemType = itemStack.getType();
 
-        if (itemType == Material.COOKIE) {
+        if (itemType == Material.COOKIE.getMaterial()) {
             Sounds.playSound(player, Sounds.CHICKEN_EGG_POP);
             config.set(player.getName() + ".cookies", newCookies);
             ClickerInventory.getInstance().openInventory(player);
@@ -47,26 +47,26 @@ public class InventoryClick implements Listener {
         event.setCancelled(true);
 
         ItemStack itemStack = event.getCurrentItem();
-        if (itemStack == null || itemStack.getType() == Material.AIR || !itemStack.hasItemMeta()) return;
-        Material itemType = itemStack.getType();
+        if (itemStack == null || itemStack.getType() == Material.AIR.getMaterial() || !itemStack.hasItemMeta()) return;
+        org.bukkit.Material itemType = itemStack.getType();
 
         Player player = (Player) event.getWhoClicked();
         FileConfiguration config = plugin.getConfig();
         int numCookies = config.getInt(player.getName() + ".cookies", 0);
 
         //x2
-        if (event.getSlot() == 12 && itemType == Material.MAP || event.getSlot() == 21 && itemStack.getDurability() == 1)
+        if (event.getSlot() == 12 && itemType == Material.EMPTY_MAP.getMaterial() || event.getSlot() == 21 && itemStack.getDurability() == 1)
             purchaseBooster(itemType, player, numCookies, 5000, 2);
         //x4
-        if (event.getSlot() == 14 && itemType == Material.MAP || event.getSlot() == 23 && itemStack.getDurability() == 1)
+        if (event.getSlot() == 14 && itemType == Material.EMPTY_MAP.getMaterial() || event.getSlot() == 23 && itemStack.getDurability() == 1)
             purchaseBooster(itemType, player, numCookies, 10000, 4);
         //x8
-        if (event.getSlot() == 16 && itemType == Material.MAP || event.getSlot() == 25 && itemStack.getDurability() == 1)
+        if (event.getSlot() == 16 && itemType == Material.EMPTY_MAP.getMaterial() || event.getSlot() == 25 && itemStack.getDurability() == 1)
             purchaseBooster(itemType, player, numCookies, 100000, 8);
     }
 
-    private void purchaseBooster(Material itemType, Player player, int numCookies, int cookiesCost, int boosterValue) {
-        if (itemType == Material.MAP) {
+    private void purchaseBooster(org.bukkit.Material itemType, Player player, int numCookies, int cookiesCost, int boosterValue) {
+        if (itemType == Material.EMPTY_MAP.getMaterial()) {
             String name = player.getName();
             FileConfiguration config = plugin.getConfig();
 

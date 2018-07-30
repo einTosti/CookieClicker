@@ -1,9 +1,9 @@
 package de.eintosti.cookieclicker.inventories;
 
 import de.eintosti.cookieclicker.CookieClicker;
+import de.eintosti.cookieclicker.misc.Material;
 import de.eintosti.cookieclicker.misc.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -16,9 +16,7 @@ public class BoosterInventory {
     private static BoosterInventory instance;
 
     public static synchronized BoosterInventory getInstance() {
-        if (instance == null) {
-            instance = new BoosterInventory();
-        }
+        if (instance == null) instance = new BoosterInventory();
         return instance;
     }
 
@@ -51,11 +49,11 @@ public class BoosterInventory {
 
     private void addBoosterPaper(Player player, Inventory inv, int position, String displayName, String cost, Integer... boosterValues) {
         int booster = CookieClicker.plugin.getConfig().getInt(player.getName() + ".booster");
-        Material material = Material.MAP;
+        org.bukkit.Material material = Material.EMPTY_MAP.getMaterial();
         String lore = Utils.getInstance().getString("booster_cost").replace("%cost%", cost);
 
         if (Arrays.asList(boosterValues).contains(booster)) {
-            material = Material.FILLED_MAP;
+            material = Material.FILLED_MAP.getMaterial();
             lore = Utils.getInstance().getString("booster_already_purchased");
         }
         Utils.getInstance().addItemStack(inv, position, material, 0, displayName, lore);
@@ -65,12 +63,12 @@ public class BoosterInventory {
         int booster = CookieClicker.plugin.getConfig().getInt(player.getName() + ".booster");
         int id = 1;
         String displayName = "§c✘";
-        Material material = Material.ROSE_RED;
+        org.bukkit.Material material = Material.RED_DYE.getMaterial();
 
         if (Arrays.asList(boosterValues).contains(booster)) {
             id = 10;
             displayName = "§a✔";
-            material = Material.LIME_DYE;
+            material = Material.LIME_DYE.getMaterial();
         }
         Utils.getInstance().addItemStack(inv, position, material, id, displayName);
     }
