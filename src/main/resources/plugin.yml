@@ -2,6 +2,7 @@ name: CookieClicker
 version: 1.5
 main: de.eintosti.cookieclicker.CookieClicker
 author: einTosti
+api-version: 1.13
 website: www.twitter.com/einTosti
 
 commands:

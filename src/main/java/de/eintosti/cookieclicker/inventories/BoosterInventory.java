@@ -65,12 +65,14 @@ public class BoosterInventory {
         int booster = CookieClicker.plugin.getConfig().getInt(player.getName() + ".booster");
         int id = 1;
         String displayName = "§c✘";
+        Material material = Material.ROSE_RED;
 
         if (Arrays.asList(boosterValues).contains(booster)) {
             id = 10;
             displayName = "§a✔";
+            material = Material.LIME_DYE;
         }
-        Utils.getInstance().addItemStack(inv, position, Material.INK_SAC, id, displayName);
+        Utils.getInstance().addItemStack(inv, position, material, id, displayName);
     }
 
     private void fillGuiWithGlass(Inventory inv, Player player) {

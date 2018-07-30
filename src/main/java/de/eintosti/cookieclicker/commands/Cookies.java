@@ -43,10 +43,10 @@ public class Cookies implements CommandExecutor {
                 case "item":
                     if (!player.hasPermission("cookies.item")) {
                         Utils.getInstance().sendPermError(player);
-                        return true;
+                        break;
                     }
                     player.getInventory().addItem(cookieItem());
-                    break;
+                    return true;
             }
 
             if (!player.hasPermission("cookies.others")) {
