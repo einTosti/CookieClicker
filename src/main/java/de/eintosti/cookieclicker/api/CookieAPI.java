@@ -12,10 +12,10 @@ public class CookieAPI {
 
     /**
      * @param player Player to be checked
-     * @return Cookie Amount of cookies the player has
+     * @return Cookie amount of cookies the player has
      */
     public static int getCookies(Player player) {
-        return CookieManager.getPlayerCookieCount(player);
+        return CookieManager.getCookieCount(player);
     }
 
     /**
@@ -23,7 +23,7 @@ public class CookieAPI {
      * @param amount Amount to be added
      */
     public static void addCookies(Player player, int amount) {
-        CookieManager.addPlayerCookies(player, amount);
+        CookieManager.addCookies(player, amount);
     }
 
     /**
@@ -31,7 +31,7 @@ public class CookieAPI {
      * @param amount Amount to be remove
      */
     public static void removeCookies(Player player, int amount) {
-        CookieManager.removePlayerCookies(player, amount);
+        CookieManager.removeCookies(player, amount);
     }
 
     /**
@@ -39,6 +39,6 @@ public class CookieAPI {
      * @param amount Amount to be set to
      */
     public static void setCookies(Player player, int amount) {
-        CookieManager.setPlayerCookies(player, amount);
+        CookieManager.setCookies(player, amount);
     }
 }
